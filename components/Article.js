@@ -86,6 +86,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'sdfsdfsdfghbdefberfgsdfgnt in 2019',
+    date: 'To Infinity and Byond',
+    firstParagraph: `dfgsdfgsdfbsdfgsdfgsdfgsdfg`,
+
+    secondParagraph: `dfghmnryukltyjseftrgadsfvawefedfhrdtykjtyfuktghmfghsdfghryj`,
+
+    thirdParagraph: `gt35gh4etbrn658uk3w56yhwrgnbtuk,ryuikerthaewrgq235yh4eth`,
   }
 ];
 
@@ -114,3 +123,45 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+function articleMaker(article){
+
+let mainDiv = document.createElement('div');
+let title = document.createElement('h2');
+let date = document.createElement('p');
+let p1 = document.createElement('p');
+let p2 = document.createElement('p');
+let p3 = document.createElement('p');
+let expandButton = document.createElement('span');
+
+mainDiv.classList = 'article'
+date.classList = 'date'
+expandButton.classList = 'expandButton'
+
+expandButton.addEventListener('click', () => mainDiv.classList.toggle('article-open'))
+
+
+title.textContent = article['title'];
+date.textContent = article['date'];
+p1.textContent = article['firstParagraph'];
+p2.textContent = article['secondParagraph'];
+p3.textContent = article['thirdParagraph'];
+expandButton.textContent = '+'
+
+mainDiv.appendChild(title);
+mainDiv.appendChild(date);
+mainDiv.appendChild(p1);
+mainDiv.appendChild(p2);
+mainDiv.appendChild(p3);
+mainDiv.appendChild(expandButton);
+
+
+return mainDiv;
+
+};
+
+
+let articleDiv = document.querySelector('.articles')
+console.log(articleDiv)
+
+data.forEach( article => articleDiv.appendChild(articleMaker(article)))
